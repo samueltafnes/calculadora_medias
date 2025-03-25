@@ -4,6 +4,7 @@ const imgAprovado = `<img src="./images/aprovado.png" />`;
 const imgReprovado = `<img src="./images/reprovado.png" />`;
 const spanAprovado = `<span class="resultado aprovado"> Aprovado </span>`;
 const spanReprovado = `<span class="resultado reprovado"> Reprovado </span>`;
+const nota_minima = parseFloat(prompt('Digite o valor da nota mínima:'));
 
 var linhas = '';
 const array_Atividades = [];
@@ -21,7 +22,7 @@ function addLinha(){
         let linha = '<tr>';
         linha += `<td> ${nome_atividade.value} </td>`;
         linha += `<td> ${nota_atividade.value} </td>`;
-        linha += `<td> ${nota_atividade.value >= 7 ? imgAprovado : imgReprovado } </td>`;
+        linha += `<td> ${nota_atividade.value >= nota_minima ? imgAprovado : imgReprovado } </td>`;
         linha += `</tr>`;
         linhas += linha;
 
@@ -49,7 +50,7 @@ function calcularMediaFinal(){
 function atualizarMediaFinal(){
     let media = calcularMediaFinal();
     document.getElementById('mediaFinal').innerHTML = media;
-    document.getElementById('resultadoFinal').innerHTML = media >= 7 ? spanAprovado : spanReprovado;
+    document.getElementById('resultadoFinal').innerHTML = media >= nota_minima ? spanAprovado : spanReprovado;
 }
 
 
